@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "dev": "netlify dev",
     "build": "netlify deploy --prod",
     "compile": "tsc",
     "start": "nodemon",
