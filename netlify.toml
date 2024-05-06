@@ -1,4 +1,4 @@
 [build]
  command = ""
-  functions = ""
+  functions = "function"
   publish = ""
