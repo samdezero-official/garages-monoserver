@@ -5,18 +5,22 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build" :"netlify deploy --prod",
+    "build": "netlify deploy --prod",
     "compile": "tsc",
-    "start": "nodemon"
+    "start": "nodemon",
+    "start:lambda": "netlify-lambda serve src/lambda"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.10.4",
+    "@netlify/functions": "^2.6.3",
     "@types/uuid": "^9.0.8",
+    "apollo-server-lambda": "^3.13.0",
     "axios": "^1.6.8",
     "graphql": "^16.8.1",
+    "netlify-lambda": "^2.0.16",
     "nodemon": "^3.1.0",
     "sha256": "^0.2.0",
     "ts-node": "^10.9.2",
