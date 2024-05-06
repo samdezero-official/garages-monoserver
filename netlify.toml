@@ -1,2 +1,5 @@
 [dev]
   functions = "functions"
+[build]
+
+  functions = "functions"
