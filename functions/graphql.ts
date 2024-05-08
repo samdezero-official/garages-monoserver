@@ -13,7 +13,8 @@ const typeDefs = gql`
   type Book {
     url: String
     hostName: String
-    extras: String
+    header: String
+    referer: String
   }
   type Query {
     books: [Book]
@@ -23,6 +24,7 @@ const typeDefs = gql`
 
 let host 
 let head
+let referer
 const resolvers = {
     Query: {
       books:  () => {
@@ -68,7 +70,7 @@ return axios
 .request(options)
     .then(function (response) {
       
-      return  [{ url : response.data.data.instrumentResponse.redirectInfo.url.toString(), hostName: host, extras: head}]
+      return  [{ url : response.data.data.instrumentResponse.redirectInfo.url.toString(), hostName: host, header: head, referer:referer}]
 })
 .catch(function (error) {
   console.error(error);
@@ -92,7 +94,8 @@ const getHandler = (event, context) => {
      const a = JSON.stringify(ctx.event.headers)
       host =   ctx.express.req.hostname
       head = a
-      console.log(JSON.parse(head))
+      referer = JSON.parse(a)['referer'].toString()
+      console.log('ss', JSON.parse(a)['referer'])
       return ctx;
     },
     introspection: true,
