@@ -2,7 +2,7 @@
   "name": "payments-portal-server",
   "version": "1.0.0",
   "description": "Payments portal is a fee collection system implementation encoded with the integration of Phonepe Payment Gateway to facilitate smooth operational workflows for the business units",
-  "main": "index.js",
+  "main": "graphql.js",
   "type": "module",
   "scripts": {
     "dev": "netlify dev",
@@ -21,7 +21,9 @@
     "apollo-server-lambda": "^3.13.0",
     "axios": "^1.6.8",
     "graphql": "^16.8.1",
+    "localtunnel": "^2.0.2",
     "netlify-lambda": "^2.0.16",
+    "ngrok": "^5.0.0-beta.2",
     "nodemon": "^3.1.0",
     "sha256": "^0.2.0",
     "ts-node": "^10.9.2",

@@ -5,17 +5,22 @@ import { ApolloServer, gql } from "apollo-server-lambda"
 import sha256 from 'sha256'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
+import { hostname } from "os";
 
 
 
 const typeDefs = gql`
   type Book {
     url: String
+    hostName: String
   }
   type Query {
     books: [Book]
   }
+  
 `
+
+let host 
 
 const resolvers = {
     Query: {
@@ -61,7 +66,8 @@ data: {
 return axios
 .request(options)
     .then(function (response) {
-      return  [{ url : response.data.data.instrumentResponse.redirectInfo.url.toString()}]
+      
+      return  [{ url : response.data.data.instrumentResponse.redirectInfo.url.toString(), hostName: host}]
 })
 .catch(function (error) {
   console.error(error);
@@ -81,6 +87,11 @@ const getHandler = (event, context) => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: async ctx => {
+      console.log(ctx.express.req.hostname);
+      host =   ctx.express.req.hostname
+      return ctx;
+    },
     introspection: true,
     debug: true,
   });
