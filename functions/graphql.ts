@@ -94,7 +94,7 @@ const getHandler = (event, context) => {
      const a = JSON.stringify(ctx.event.headers)
       host =   ctx.express.req.hostname
       head = a
-      referer = JSON.parse(a)['referer'].toString()
+      referer = JSON.parse(a)['referer']
       console.log('ss', JSON.parse(a)['referer'])
       return ctx;
     },
