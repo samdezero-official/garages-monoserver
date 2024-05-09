@@ -181,9 +181,9 @@ const resolvers = {
         amount: args.paymentInput.amount,
         url: res,
       });
-
-      payment.save();
-      return { ...payment._doc };
+      payment.save().then(() => {
+        return { ...payment._doc };
+      });
     }
   },
   initiateRefund: async () => {
