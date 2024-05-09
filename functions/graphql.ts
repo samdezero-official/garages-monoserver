@@ -181,7 +181,7 @@ const resolvers = {
         amount: args.paymentInput.amount,
         url: res,
       });
-      payment.save().then(() => {
+      payment.save().then((payment) => {
         return { ...payment._doc };
       });
     }
